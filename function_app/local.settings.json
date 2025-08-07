@@ -1,0 +1,10 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AZURE_SUBSCRIPTION_ID": "c6dd8e77-6e8a-4de1-8b4d-7d15d57dbb71",
+    "RESOURCE_GROUP_NAME": "autoheal2-rg",
+    "VM_NAME": "autoheal2-vm"
+  }
+}
