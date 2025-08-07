@@ -1,7 +1,7 @@
 # Azure VM CPU Abuse Auto-Remediation
 
 # Overview
-This project provides an automated solution to handle instances of sustained high CPU usage on virtual machines within a non-production lab environment. In our lab, VMs are not expected to run CPU-intensive tasks. Therefore, any VM with a CPU utilization greater than 90% for more than 10 minutes is considered anomalous, likely due to a runaway process or unauthorized use (e.g., crypto-mining). This automation detects such conditions and triggers an automatic restart of the affected VM to restore it to a normal operational state.
+This project provides an automated solution to handle instances of sustained high CPU usage on virtual machines within a non-production lab environment. In our lab, VMs are not expected to run CPU-intensive tasks. Therefore, any VM with a CPU utilization greater than 90% for more than 15 minutes is considered anomalous, likely due to a runaway process or unauthorized use (e.g., crypto-mining). This automation detects such conditions and triggers an automatic restart of the affected VM to restore it to a normal operational state.
 
 # The Problem 😥
 Manually monitoring our Azure lab VMs for resource abuse is inefficient and slow. A single VM with a stuck process or unapproved software can consume excessive CPU resources, potentially impacting the host server and other VMs. This requires an administrator to:
@@ -12,7 +12,7 @@ This manual process leads to delays, prolonged resource contention, and unnecess
 
 # The Automated Solution ✅
 This solution leverages native Azure services to create a hands-off remediation workflow.
- * Detection (Azure Monitor): An Azure Monitor Alert rule is configured to continuously watch the Percentage CPU metric for all VMs within the lab's resource group. The alert is triggered if the average CPU utilization exceeds 90% over a 10-minute aggregation period.
+ * Detection (Azure Monitor): An Azure Monitor Alert rule is configured to continuously watch the Percentage CPU metric for all VMs within the lab's resource group. The alert is triggered if the average CPU utilization exceeds 90% over a 15-minute aggregation period.
  * Action (Action Group & Azure Function): When the alert condition is met, it triggers an Action Group. This group is configured to invoke a specific Azure Function.
  * Remediation (Azure Function): The Azure Function executes the core logic. It receives the alert payload, which contains the resource ID of the problematic VM. Using a managed identity for secure authentication, the function issues a command via the Azure API to restart the identified VM.
 
