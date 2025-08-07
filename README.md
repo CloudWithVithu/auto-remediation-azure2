@@ -117,3 +117,5 @@ Basic tests implemented using `pytest` to validate function behavior:
 This project is a hands-on demonstration of **event-driven automation**, **Infrastructure-as-Code**, and **CI/CD pipelines** on Azure.  
 It reflects my practical understanding of cloud-native solutions and DevOps workflows.  
 As my journey in cloud engineering continues, I plan to enhance this solution further to include observability, security, and broader remediation capabilities.
+
+## CI CD testing .......
