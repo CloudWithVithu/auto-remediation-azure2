@@ -2,8 +2,8 @@ name: Deploy Azure Function (Python)
 
 on:
   push:
-    branches:
-      - main
+    paths:
+      - 'restart_vm/**' 
 
 jobs:
   deploy-function:
