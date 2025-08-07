@@ -1,0 +1,34 @@
+name: Deploy Azure Function (Python)
+
+on:
+  push:
+    paths:
+      - 'restart_vm/**'
+    branches:
+      - main
+
+jobs:
+  deploy-function:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install Azure Functions Core Tools
+        run: npm install -g azure-functions-core-tools@4 --unsafe-perm true
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Publish to Azure Function App
+        run: |
+          cd restart_vm
+          func azure functionapp publish ${{ secrets.FUNCTION_APP_NAME }} --python
