@@ -28,5 +28,5 @@ jobs:
 
       - name: Publish to Azure Function App
         run: |
-          cd restart_vm
+          cd function_app
           func azure functionapp publish ${{ secrets.FUNCTION_APP_NAME }} --python
