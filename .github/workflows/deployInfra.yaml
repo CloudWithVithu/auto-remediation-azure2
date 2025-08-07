@@ -2,8 +2,6 @@ name: Deploy Azure Infra with Terraform
 
 on:
   push:
-    paths:
-      - 'infra/**'
     branches:
       - main
 
